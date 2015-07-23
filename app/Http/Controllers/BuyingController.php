@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Session;
 use Cart;
-use Illuminate\Http\Request;
+use DB;
+use Request;
 use App\Books;
+use App\Carts;
+use App\Order;
+use Carbon\Carbon;
 use App\Http\Requests\BuyBooksRequest;
 
 use App\Http\Requests;
@@ -41,13 +45,15 @@ class BuyingController extends Controller
 
     public function shoppingCartGet(){
         $contenido = Cart::content();
+        $precio = Cart::total();
 
-        return view('shoppingCart2')->with('contenido',$contenido);
+        $carro = array($contenido, $precio);
+        return view('shoppingCart2')->with('carro' ,$carro);
     }
     
-    public function shoppingCartDelete($rowid){
+    public function shoppingCartDelete(){
     //public function shoppingCartDelete(BuyBooksRequest $request){
-        //$rowid = $request->get('rowid');
+        $rowid = Request::get('rowid');
 
         Cart::remove($rowid);
 
@@ -61,6 +67,26 @@ class BuyingController extends Controller
         Cart::update($rowid, $cant);
 
         return redirect()->action('BuyingController@shoppingCartGet');
+    }
+
+    public function checkout(){
+        $user = "guest"; //Hacer dinámico tras implementar sistema de usuarios
+        $price = Request::get('price');
+
+        $cart=Carts::create(['username' => $user, 'bought_at' => Carbon::now(), 'price' => $price]);
+
+        //Creando orden de compra:
+        $currentCart = Cart::content();
+
+        //dd($currentCart);
+
+        foreach ($currentCart as $element){
+            Order::create(['id_cart' => $cart->id, 'isbn' => $element->id, 'cantidad' => $element->qty, 'subtotal' => $element->subtotal]);
+        }
+
+        Cart::destroy();
+        
+        return view('about');
     }
 
 /*

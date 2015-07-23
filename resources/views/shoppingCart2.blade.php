@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>Título</th>
+                    <th>ISBN</th>
                     <th>Precio Unitario</th>
                     <th>Cantidad</th>
                     <th>Subtotal</th>
@@ -18,10 +19,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($contenido as $book)
+                @foreach($carro[0] as $book)
                     <tr>
                         <td>
                             <center>{{ $book -> name }}</center>
+                        </td>
+                        <td>
+                            <center>{{ $book -> id }}</center>
                         </td>
                         <td>
                             <center>{{ $book -> price }}</center>
@@ -64,14 +68,25 @@
                                 </ul>
                             @endif
                             </center>
-                        </td>
+                        </td> 
                     </tr>
                 @endforeach
-                <tr>
-
-                </tr>
             </tbody>
-        </table>
+        </table><br>
+        <center><strong>Precio total: {{ $carro[1] }}</strong><br><br>
+        <a href="ListBuyingBooks" class="button success">Keep Buying</a>
+        </center>
+
+
+        {!! Form::open(['url' => 'about']) !!}
+
+        {!! Form::hidden('price', $carro[1]) !!}
+
+        <center>
+            {!! Form::submit('Buy', ['class' => 'button round success large']) !!}
+        </center>
+        {!! Form::close() !!}
+
 
 <!-- Content End -->
 @endsection

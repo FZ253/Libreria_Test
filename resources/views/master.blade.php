@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{url('foundation/css/foundation.css')}}" />
-    <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="DataTables/js/jquery.js"></script>
-    <script type="text/javascript" charset="utf8" src="DataTables/js/jquery.dataTables.js"></script>
-    <script src="foundation/js/vendor/modernizr.js"></script>
-    <script src="foundation/js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{url('DataTables/css/jquery.dataTables.css')}}">
+    <script type="text/javascript" charset="utf8" src="{{url('DataTables/js/jquery.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="{{url('DataTables/js/jquery.dataTables.js')}}"></script>
+    <script src="{{url('foundation/js/vendor/modernizr.js')}}"></script>
+    <script src="{{url('foundation/js/vendor/modernizr.js')}}"></script>
 
     <script type="text/javascript">
          $(document).ready(function() {

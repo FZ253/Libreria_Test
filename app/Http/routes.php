@@ -43,5 +43,5 @@ Route::post('ShoppingCart', 'BuyingController@shoppingCartPost');
 
 Route::get('ShoppingCart', 'BuyingController@shoppingCartGet');
 
-
+Route::post('about', 'BuyingController@checkout');
 

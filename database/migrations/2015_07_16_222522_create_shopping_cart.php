@@ -15,6 +15,8 @@ class CreateShoppingCart extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username');
+            $table->timestamp('bought_at');
+            $table->float('price');
         });
     }
 

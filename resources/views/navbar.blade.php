@@ -3,7 +3,7 @@
       <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
         <ul class="title-area">
             <li class="name">
-              <h1><a href="/about">Little Library</a></h1>
+              <h1><a href="{{url('about')}}">Little Library</a></h1>
             </li>
              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
             <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
@@ -12,9 +12,13 @@
           <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="right">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About us</a></li>
-              <li><a href="/contact">Contact us</a></li>
+              <li><a href="{{url('/')}}">Home</a></li>
+              <li><a href="{{url('ListBuyingBooks')}}">Check Books</a></li>
+              <li><a href="{{url('NewBook')}}">New Books</a></li>
+              <li><a href="{{url('AddBooksToInventory')}}">Add Books</a></li>
+              <li><a href="{{url('ShoppingCart')}}">Shopping Cart</a></li>
+              <li><a href="{{url('about')}}">About us</a></li>
+              <li><a href="{{url('contact')}}">Contact us</a></li>
             </ul>
           </section>
         </nav>

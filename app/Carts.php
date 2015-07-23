@@ -1,0 +1,16 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Carts extends Model
+{
+    protected $fillable = [
+    	'username',
+    	'bought_at',
+    	'price'
+    ];
+
+    public $timestamps = false;
+}

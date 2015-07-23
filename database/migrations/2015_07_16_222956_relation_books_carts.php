@@ -12,10 +12,12 @@ class RelationBooksCarts extends Migration
      */
     public function up()
     {
-        Schema::create('bookscarts', function (Blueprint $table) {
-            $table->integer('isbn');
+        Schema::create('orders', function (Blueprint $table) {
             $table->integer('id_cart');
-            $table->timestamp('added_at');
+            $table->string('isbn');
+            $table->integer('cantidad');
+            $table->float('subtotal');
+            
         });
     }
 
