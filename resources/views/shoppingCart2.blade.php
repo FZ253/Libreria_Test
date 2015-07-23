@@ -38,7 +38,7 @@
                         </td>
                         <td>
                             <center>
-                            {!! Form::open(['url' => 'ShoppingCart', 'method' => 'DELETE']) !!}
+                            {!! Form::open(['url' => 'cart', 'method' => 'DELETE']) !!}
 
                             {!! Form::hidden('rowid', $book->rowid) !!}
 
@@ -49,7 +49,7 @@
                         </td>
                         <td>
                             <center>
-                            {!! Form::open(['url' => 'ShoppingCart', 'method' => 'PUT']) !!}
+                            {!! Form::open(['url' => 'cart', 'method' => 'PUT']) !!}
 
                             {!! Form::label('cantidad', 'New Quantity: ') !!}
                             {!! Form::text('cantidad') !!}

@@ -19,7 +19,7 @@
     </div>
     <div class="container">
     
-    {!! Form::open(['url' => 'ShoppingCart']) !!}
+    {!! Form::open(['url' => 'cart']) !!}
 
     <!--
     {!! Form::open(array('method' => 'POST','url' => 'ShoppingCart')) !!}

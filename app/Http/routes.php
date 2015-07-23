@@ -15,33 +15,33 @@ Route::get('/', 'PagesController@home');
 
 Route::get('about', 'PagesController@about');
 
-Route::get('Contact', 'PagesController@contact');
+Route::get('contact', 'PagesController@contact');
 
-Route::get('ListBooks', 'BooksController@listBooks');
+Route::get('book/list', 'BooksController@listBooks');
 
-Route::post('ListBooks/{isbn}', 'BooksController@updateQuantity');
+Route::post('book/list/{isbn}', 'BooksController@updateQuantity');
 
-Route::post('ListBooks', 'BooksController@storeBook');
+Route::post('book/list', 'BooksController@storeBook');
 
-Route::get('NewBook', 'BooksController@newBooks');
+Route::get('book/new', 'BooksController@newBooks');
 
-Route::get('ListBooks/{isbn}', 'BooksController@specificBook');
+Route::get('book/list/{isbn}', 'BooksController@specificBook');
 
-Route::get('AddBooksToInventory', 'BooksController@addBooks');
+Route::get('book/add', 'BooksController@addBooks');
 
-Route::get('AddBooksToInventory/{isbn}', 'BooksController@addSpecificBook');
+Route::get('book/add/{isbn}', 'BooksController@addSpecificBook');
 
-Route::get('ListBuyingBooks', 'BuyingController@listbooks');
+Route::get('book/buy/list', 'BuyingController@listbooks');
 
-Route::get('ListBuyingBooks/{isbn}', 'BuyingController@detailBook');
+Route::get('book/buy/list/{isbn}', 'BuyingController@detailBook');
 
-Route::put('ShoppingCart', 'BuyingController@shoppingCartPut');
+Route::put('cart', 'BuyingController@shoppingCartPut');
 
-Route::delete('ShoppingCart', 'BuyingController@shoppingCartDelete');
+Route::delete('cart', 'BuyingController@shoppingCartDelete');
 
-Route::post('ShoppingCart', 'BuyingController@shoppingCartPost');
+Route::post('cart', 'BuyingController@shoppingCartPost');
 
-Route::get('ShoppingCart', 'BuyingController@shoppingCartGet');
+Route::get('cart', 'BuyingController@shoppingCartGet');
 
 Route::post('about', 'BuyingController@checkout');
 

@@ -26,10 +26,10 @@
     @yield('content')
 
 
-    <script src="foundation/js/vendor/jquery.js"></script>
-    <script src="foundation/js/foundation/foundation.js"></script>
+    <script src="{{url('foundation/js/vendor/jquery.js')}}"></script>
+    <script src="{{url('foundation/js/foundation/foundation.js')}}"></script>
 
-    <script src="foundation/js/foundation/foundation.topbar.js"></script>
+    <script src="{{url('foundation/js/foundation/foundation.topbar.js')}}"></script>
     <script>
         $(document).foundation();
     </script>

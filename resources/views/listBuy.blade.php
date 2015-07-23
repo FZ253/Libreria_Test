@@ -20,7 +20,7 @@
 		    	@foreach($books as $book)
 		    		<tr>
 		    		    <td>
-		    		    	<a href="{{ url('/ListBuyingBooks', $book->isbn) }}"><b>{{ $book -> titulo }}</b></a>
+		    		    	<a href="{{ url('book/buy/list', $book->isbn) }}"><b>{{ $book -> titulo }}</b></a>
 		    		    </td>
 		    		    <td>
 		    		    	{{ $book -> genero }}

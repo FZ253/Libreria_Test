@@ -5,7 +5,7 @@
 <!-- Content Start -->
 	<h1>Add a new book:</h1>
 	<hr/>
-	{!! Form::open(['url' => 'ListBooks']) !!}
+	{!! Form::open(['url' => 'book/list']) !!}
 
 		<div class="large-12 columns">
 			{!! Form::label('isbn', 'ISBN: ') !!}

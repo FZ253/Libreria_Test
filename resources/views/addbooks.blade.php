@@ -17,7 +17,7 @@
         <br>
     </div>
 
-    {!! Form::open(['url' => 'ListBooks/' . $book->isbn]) !!}
+    {!! Form::open(['url' => 'book/list/' . $book->isbn]) !!}
 
         <div class="large-2 columns">
             {!! Form::label('cantidad', 'Quantity: ') !!}
