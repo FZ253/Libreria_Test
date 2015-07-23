@@ -35,6 +35,8 @@ Route::get('ListBuyingBooks', 'BuyingController@listbooks');
 
 Route::get('ListBuyingBooks/{isbn}', 'BuyingController@detailBook');
 
+Route::put('ShoppingCart', 'BuyingController@shoppingCartPut');
+
 Route::delete('ShoppingCart', 'BuyingController@shoppingCartDelete');
 
 Route::post('ShoppingCart', 'BuyingController@shoppingCartPost');

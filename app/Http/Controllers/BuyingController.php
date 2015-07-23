@@ -44,20 +44,25 @@ class BuyingController extends Controller
 
         return view('shoppingCart2')->with('contenido',$contenido);
     }
+    
+    public function shoppingCartDelete($rowid){
+    //public function shoppingCartDelete(BuyBooksRequest $request){
+        //$rowid = $request->get('rowid');
 
-    public function shoppingCartDelete(BuyBooksRequest $request){
-        $isbn = $request->get('isbn');
-
-        $titulo = $request->get('titulo');
-
-        $precio = $request->get('precio');
-
-        $cantidad = $request->get('cantidad');
-
-        Cart::add($isbn, $titulo, $cantidad, $precio);
+        Cart::remove($rowid);
 
         return redirect()->action('BuyingController@shoppingCartGet');
     }
+
+    public function shoppingCartPut(BuyBooksRequest $request){
+        $rowid = $request->get('rowid');
+        $cant = $request->get('cantidad');
+
+        Cart::update($rowid, $cant);
+
+        return redirect()->action('BuyingController@shoppingCartGet');
+    }
+
 /*
     public function shoppingCartPost(BuyBooksRequest $request){
         $isbn = $request->input('isbn');

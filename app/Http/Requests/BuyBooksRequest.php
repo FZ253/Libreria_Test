@@ -24,7 +24,7 @@ class BuyBooksRequest extends Request
     public function rules()
     {
         return [
-            //'cantidad' => 'required|numeric' //Falta validar la cantidad de libros disponibles
+            'cantidad' => 'required|numeric|min:1' 
         ];
     }
 }
