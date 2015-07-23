@@ -11,32 +11,34 @@
                 <tr>
                     <th>Título</th>
                     <th>Precio Unitario</th>
-                    <th>Moneda</th>
                     <th>Cantidad</th>
-                    <th>Precio Total</th>
+                    <th>Subtotal</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                @foreach($books as $book)
+                @foreach($contenido as $book)
                     <tr>
                         <td>
-                            <a href="{{ url('/ListBuyingBooks', $book[0][0]->isbn) }}"><b>{{ $book[0][0] -> titulo }}</b></a>
+                            <center>{{ $book -> name }}</center>
                         </td>
                         <td>
-                            {{ $book[0][0] -> precio }}
+                            <center>{{ $book -> price }}</center>
                         </td>
                         <td>
-                            {{ $book[0][0] -> moneda }}
+                            <center>{{ $book -> qty }}</center>
                         </td>
                         <td>
-                            {{ $book[0][1] }}
+                            <center>{{ $book -> subtotal }}</center>
                         </td>
                         <td>
-                            <center> {{ $book[0][1] * ($book[0][0] -> precio) }} </center>
+                            <center>{{ $book -> subtotal }}</center>
                         </td>
                     </tr>
                 @endforeach
-                
+                <tr>
+
+                </tr>
             </tbody>
         </table>
 

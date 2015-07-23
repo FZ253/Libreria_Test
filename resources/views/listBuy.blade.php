@@ -13,6 +13,7 @@
 		            <th>Género</th>
 		            <th>Precio</th>
 		            <th>Moneda</th>
+		            <th>Disponibles</th>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -28,7 +29,10 @@
 		    		    	{{ $book -> precio }}
 		    		    </td>
 		    		    <td>
-		    		    	{{ $book -> moneda }}
+		    		    	Nuevos Soles<!--{{ $book -> moneda }}-->
+		    		    </td>
+		    		    <td>
+		    		    	<center>{{ $book -> cantidad }}</center>
 		    		    </td>
 		    		</tr>
 		    	@endforeach

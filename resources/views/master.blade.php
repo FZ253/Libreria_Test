@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="{{url('foundation/css/foundation.css')}}" />
     <link rel="stylesheet" type="text/css" href="DataTables/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="DataTables/js/jquery.js"></script>
-    <script type="text/javascript" charset="utf8" src="/DataTables/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="DataTables/js/jquery.dataTables.js"></script>
     <script src="foundation/js/vendor/modernizr.js"></script>
     <script src="foundation/js/vendor/modernizr.js"></script>
 
     <script type="text/javascript">
-      $(document).ready( function () {
-          $('#table_id').DataTable();
-
-      } );
+         $(document).ready(function() {
+             $('#table_id').dataTable( {
+                 "pagingType": "full_numbers"
+             } );
+         } );
     </script>
 
 </head>

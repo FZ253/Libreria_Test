@@ -27,5 +27,6 @@
 		        
 		    </tbody>
 		</table>
+		
 <!-- Content End -->
 @endsection

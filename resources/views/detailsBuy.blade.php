@@ -14,11 +14,16 @@
         Edition: {{ $book -> edicion }} <br>
         Genre: {{ $book -> genero }} <br>
         Country: {{ $book -> pais }} <br>
+        Price: {{ $book -> precio }} Nuevos Soles<br>
         <br>
     </div>
     <div class="container">
-        {!! Form::open(['url' => 'ShoppingCart']) !!}
+    
+    {!! Form::open(['url' => 'ShoppingCart']) !!}
 
+    <!--
+    {!! Form::open(array('method' => 'POST','url' => 'ShoppingCart')) !!}
+    -->
         <div class="large-3 columns">
         {!! Form::label('cantidad', 'Quantity: ') !!}
         {!! Form::text('cantidad') !!}
@@ -26,6 +31,8 @@
         
 
         {!! Form::hidden('isbn', $book->isbn) !!}
+        {!! Form::hidden('titulo', $book->titulo) !!}
+        {!! Form::hidden('precio', $book->precio) !!}
 
         <center><div>
             {!! Form::submit('Add to the cart', ['class' => 'button success']) !!}
