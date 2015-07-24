@@ -64,4 +64,4 @@ Route::post('finish/cash', 'BuyingController@cashPay');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
-])
+]);
