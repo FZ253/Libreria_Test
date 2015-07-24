@@ -6,7 +6,7 @@
     <h1>Shopping Cart:</h1>
         <hr/>
 
-    <table id="table_id" class="display">
+    <table id="table_cart" class="display">
             <thead>
                 <tr>
                     <th>Título</th>
@@ -77,16 +77,9 @@
         <a href="book/buy/list" class="button success">Keep Buying</a>
         </center>
 
-
-        {!! Form::open(['url' => 'about']) !!}
-
-        {!! Form::hidden('price', $carro[1]) !!}
-
         <center>
-            {!! Form::submit('Buy', ['class' => 'button round success large']) !!}
+        <a href="{{url('payment/form')}}" class="button round success large">Buy</a>
         </center>
-        {!! Form::close() !!}
-
 
 <!-- Content End -->
 @endsection

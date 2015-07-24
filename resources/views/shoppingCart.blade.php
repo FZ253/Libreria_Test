@@ -6,7 +6,7 @@
     <h1>Shopping Cart:</h1>
         <hr/>
 
-    <table id="table_id" class="display">
+    <table id="table_cart" class="display">
             <thead>
                 <tr>
                     <th>Título</th>

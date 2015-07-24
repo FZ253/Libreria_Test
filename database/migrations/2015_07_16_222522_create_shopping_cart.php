@@ -17,6 +17,12 @@ class CreateShoppingCart extends Migration
             $table->string('username');
             $table->timestamp('bought_at');
             $table->float('price');
+            $table->string('status')->default('to send');
+            /*
+            Estados:
+            - to send
+            - sent (Se inserta tras hacer el pago [cŕedito] o se confirma el pago [efectivo])
+            */
         });
     }
 

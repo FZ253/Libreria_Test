@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RelationBooksCarts extends Migration
+class CardPay extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class RelationBooksCarts extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('card_pays', function (Blueprint $table) {
             $table->integer('id_cart');
-            $table->string('isbn');
-            $table->integer('cantidad');
-            $table->float('subtotal');        
+            $table->string('cardNo');
+            $table->string('status')->default('to discount');
+            //Asumiendo tarjeta de débito (Descuento en otra fecha por lo general)
         });
     }
 
@@ -27,8 +27,6 @@ class RelationBooksCarts extends Migration
      */
     public function down()
     {
-        Schema::table('bookscarts', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

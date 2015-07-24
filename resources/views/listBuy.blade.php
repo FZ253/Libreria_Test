@@ -5,7 +5,7 @@
 <!-- Content Start -->
 	<h1>Buying books:</h1>
 		<hr/>
-
+	<div class ="container" style="width:99%;">
 		<table id="table_id" class="display">
 		    <thead>
 		        <tr>
@@ -16,6 +16,15 @@
 		            <th>Disponibles</th>
 		        </tr>
 		    </thead>
+		    <tfoot>
+		        <tr>
+		            <th>Título</th>
+		            <th>Género</th>
+		            <th>Precio</th>
+		            <th>Moneda</th>
+		            <th>Disponibles</th>
+		        </tr>
+		    </tfoot>
 		    <tbody>
 		    	@foreach($books as $book)
 		    		<tr>
@@ -39,5 +48,6 @@
 		        
 		    </tbody>
 		</table>
+	</div>
 <!-- Content End -->
 @endsection

@@ -9,8 +9,15 @@ use Request;
 use App\Books;
 use App\Carts;
 use App\Order;
+use App\OrderDetails;
+use App\CardPay;
+use App\CashPay;
 use Carbon\Carbon;
 use App\Http\Requests\BuyBooksRequest;
+use App\Http\Requests\PaymentRequest;
+use App\Http\Requests\PayRequest;
+use App\Http\Requests\CashPayRequest;
+use App\Http\Requests\CardPayRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -70,65 +77,73 @@ class BuyingController extends Controller
     }
 
     public function checkout(){
-        $user = "guest"; //Hacer dinámico tras implementar sistema de usuarios
-        $price = Request::get('price');
+        $price = Cart::total();
 
-        $cart=Carts::create(['username' => $user, 'bought_at' => Carbon::now(), 'price' => $price]);
+        Session::put('price', $price);
+        
+        return view('payment');
+    }
+
+    public function payment(PaymentRequest $request){
+        Session::put('request', $request->all());
+
+        $tipoPagoRequest = $request->get('tipo_pago');
+
+        return redirect()->route('close', [$tipoPagoRequest]);
+    }
+
+    public function cashPay(CashPayRequest $cashRequest) {
+        $price = Session::get('price');
+        $request = Session::get('request');
+        $user = "guest"; //Hacer dinámico tras implementar sistema de usuarios
+
+        $cartQuery = array('username' => $user, 'bought_at' => Carbon::now(), 'price' => Session::get('price'));
+
+        $cart = Carts::create($cartQuery);
 
         //Creando orden de compra:
-        $currentCart = Cart::content();
-
-        //dd($currentCart);
+            $currentCart = Cart::content();
 
         foreach ($currentCart as $element){
             Order::create(['id_cart' => $cart->id, 'isbn' => $element->id, 'cantidad' => $element->qty, 'subtotal' => $element->subtotal]);
         }
 
-        Cart::destroy();
-        
+        $cartID = $cart->id;
+
+        CashPay::create(['id_cart' => $cartID, 'payer_DNI' =>$cashRequest->get('payer_DNI'), 'payer_name' => $cashRequest->get('payer_name'), 'payer_last_name' => $cashRequest->get('payer_last_name')]);
+        OrderDetails::create(['id_cart'=>$cartID,'nombres'=>$request['nombres'],'apellidos'=>$request['apellidos'],'dni'=>$request['dni'],'telefono'=>$request['telefono'],'fecha_nacimiento'=>$request['fecha_nacimiento'],'direccion'=>$request['direccion'],'tipo_pago'=>$request['tipo_pago']]);
+
         return view('about');
     }
 
-/*
-    public function shoppingCartPost(BuyBooksRequest $request){
-        $isbn = $request->input('isbn');
+    public function cardPay(CardPayRequest $cardRequest){
+        $pass = DB::table('cardData')->where('cardNo', $cardRequest->get('cardNo'))->get()[0]->security_password;
+        if ($pass == $cardRequest->security_password){
+            $price = Session::get('price');
+            $request = Session::get('request');
+            $user = "guest"; //Hacer dinámico tras implementar sistema de usuarios
 
-        //$book = Books::where('isbn', $isbn)->firstOrFail(); 
+            $cartQuery = array('username' => $user, 'bought_at' => Carbon::now(), 'price' => $price);
 
-        $quantity = $request->get('cantidad');   
+            $cart = Carts::create($cartQuery);
 
-        //Arreglo para almacenar elementos a guardar:
-        $book = Books::where('isbn', $isbn)->firstOrFail();
-        $arreglo = array($book ,$quantity);
-        
-        //Uso de Variable de Sesión para carro de compra:
-        
-        if (count(Session::all()) === 3){
-            $contador = 0;
+            //Creando orden de compra:
+                $currentCart = Cart::content();
+
+            foreach ($currentCart as $element){
+                Order::create(['id_cart' => $cart->id, 'isbn' => $element->id, 'cantidad' => $element->qty, 'subtotal' => $element->subtotal]);
+            }
+
+            $cardNo = $cardRequest->get('cardNo');
+            //dd($cardNo);
+
+            CardPay::create(['id_cart' => $cart->id, 'cardNo' => $cardNo]);
+        OrderDetails::create(['id_cart'=>$cart->id,'nombres'=>$request['nombres'],'apellidos'=>$request['apellidos'],'dni'=>$request['dni'],'telefono'=>$request['telefono'],'fecha_nacimiento'=>$request['fecha_nacimiento'],'direccion'=>$request['direccion'],'tipo_pago'=>$request['tipo_pago']]);
         }else{
-            $contador = count(Session::all()) - 3;
-        }
+            Session::flash('flash_message', 'Check your Card Numer and Password.');
+        } 
 
-
-        Session::push($contador, $arreglo);
-
-        $booksSession = Session::all(); // Índice de isbn con keys incrementales regulares
-
-        //dd($booksSession);
-
-
-        $books = array();
-
-        for ($i = 0; $i < (count($booksSession) - 3); $i++){
-            array_push($books, ($booksSession[$i]));
-        }
-
-        dd($books);
-
-    	return view('shoppingCart')->with('books',$books);
+        return view('about');
     }
-*/
-
-
 
 }

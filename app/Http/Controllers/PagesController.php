@@ -24,4 +24,12 @@ class PagesController extends Controller
     public function contact(){
         return view('contact');
     }
+
+    public function cashPay(){
+        return view('cashPay');
+    }
+
+    public function cardPay(){
+        return view('cardPay');
+    }
 }

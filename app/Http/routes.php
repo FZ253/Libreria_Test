@@ -43,5 +43,25 @@ Route::post('cart', 'BuyingController@shoppingCartPost');
 
 Route::get('cart', 'BuyingController@shoppingCartGet');
 
-Route::post('about', 'BuyingController@checkout');
+Route::get('payment/form', 'BuyingController@checkout');
 
+Route::post('payment/close', 'BuyingController@payment');
+
+Route::post('payment/close/cash', 'BuyingController@cashPay');
+
+Route::post('payment/close/card', 'BuyingController@cardPay');
+
+Route::post('payment/close/{id}', ['as' => 'close', 'uses' => 'BuyingController@payment']);
+
+Route::get('payment/close/cash', ['as' => 'closeCash', 'uses' => 'PagesController@cashPay']);
+
+Route::get('payment/close/card', ['as' => 'closeCard', 'uses' => 'PagesController@cardPay']);
+
+Route::post('finish/card', 'BuyingController@cardPay');
+
+Route::post('finish/cash', 'BuyingController@cashPay');
+
+
+
+
+//Route::post('payment/close/card',['as' => 'named', 'uses' => 'BuyingController@cardPay']);

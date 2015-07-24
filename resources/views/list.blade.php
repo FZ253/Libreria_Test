@@ -5,14 +5,20 @@
 <!-- Content Start -->
 	<h1>List of Books:</h1>
 		<hr/>
-
-		<table id="table_id" class="display">
+	<div class ="container" style="width:99%;">
+			<table id="table_id" class="display">
 		    <thead>
 		        <tr>
 		            <th>Título</th>
 		            <th>Género</th>
 		        </tr>
 		    </thead>
+		    <tfoot>	
+		        <tr>
+		            <th>Título</th>
+		            <th>Género</th>
+		        </tr>
+		    </tfoot>
 		    <tbody>
 		    	@foreach($books as $book)
 		    		<tr>
@@ -27,6 +33,7 @@
 		        
 		    </tbody>
 		</table>
+	</div>
 		
 <!-- Content End -->
 @endsection
