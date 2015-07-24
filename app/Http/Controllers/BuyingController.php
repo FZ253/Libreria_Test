@@ -113,6 +113,7 @@ class BuyingController extends Controller
         CashPay::create(['id_cart' => $cartID, 'payer_DNI' =>$cashRequest->get('payer_DNI'), 'payer_name' => $cashRequest->get('payer_name'), 'payer_last_name' => $cashRequest->get('payer_last_name')]);
         OrderDetails::create(['id_cart'=>$cartID,'nombres'=>$request['nombres'],'apellidos'=>$request['apellidos'],'dni'=>$request['dni'],'telefono'=>$request['telefono'],'fecha_nacimiento'=>$request['fecha_nacimiento'],'direccion'=>$request['direccion'],'tipo_pago'=>$request['tipo_pago']]);
 
+        Cart::destroy();
         return view('about');
     }
 
@@ -139,6 +140,7 @@ class BuyingController extends Controller
 
             CardPay::create(['id_cart' => $cart->id, 'cardNo' => $cardNo]);
         OrderDetails::create(['id_cart'=>$cart->id,'nombres'=>$request['nombres'],'apellidos'=>$request['apellidos'],'dni'=>$request['dni'],'telefono'=>$request['telefono'],'fecha_nacimiento'=>$request['fecha_nacimiento'],'direccion'=>$request['direccion'],'tipo_pago'=>$request['tipo_pago']]);
+        Cart::destroy();
         }else{
             Session::flash('flash_message', 'Check your Card Numer and Password.');
         } 

@@ -61,7 +61,7 @@ Route::post('finish/card', 'BuyingController@cardPay');
 
 Route::post('finish/cash', 'BuyingController@cashPay');
 
-
-
-
-//Route::post('payment/close/card',['as' => 'named', 'uses' => 'BuyingController@cardPay']);
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+])
