@@ -60,8 +60,9 @@ Route::get('payment/close/card', ['as' => 'closeCard', 'uses' => 'PagesControlle
 Route::post('finish/card', 'BuyingController@cardPay');
 
 Route::post('finish/cash', 'BuyingController@cashPay');
-
+/*
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+*/
