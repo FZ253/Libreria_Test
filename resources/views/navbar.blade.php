@@ -13,10 +13,10 @@
             <!-- Right Nav Section -->
             <ul class="right">
               <li><a href="{{url('/')}}">Home</a></li>
-              <li><a href="{{url('ListBuyingBooks')}}">Check Books</a></li>
-              <li><a href="{{url('NewBook')}}">New Books</a></li>
-              <li><a href="{{url('AddBooksToInventory')}}">Add Books</a></li>
-              <li><a href="{{url('ShoppingCart')}}">Shopping Cart</a></li>
+              <li><a href="{{url('book/buy/list')}}">Check Books</a></li>
+              <li><a href="{{url('book/new')}}">New Books</a></li>
+              <li><a href="{{url('book/add')}}">Add Books</a></li>
+              <li><a href="{{url('cart')}}">Shopping Cart</a></li>
               <li><a href="{{url('about')}}">About us</a></li>
               <li><a href="{{url('contact')}}">Contact us</a></li>
             </ul>

@@ -36,7 +36,7 @@ class BooksController extends Controller
 
         Books::create($request->all());
 
-        return redirect('ListBooks');
+        return redirect('book/list');
     }
 
     public function addSpecificBook($isbn){
@@ -57,6 +57,6 @@ class BooksController extends Controller
 
         DB::commit();
 
-        return redirect('ListBooks')->with('book',$book);
+        return redirect('book/list')->with('book',$book);
     }
 }

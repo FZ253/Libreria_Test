@@ -74,7 +74,7 @@
             </tbody>
         </table><br>
         <center><strong>Precio total: {{ $carro[1] }}</strong><br><br>
-        <a href="ListBuyingBooks" class="button success">Keep Buying</a>
+        <a href="book/buy/list" class="button success">Keep Buying</a>
         </center>
 
 
