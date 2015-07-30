@@ -5,16 +5,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{url('foundation/css/foundation.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('DataTables/css/jquery.dataTables.css')}}">
-    <script src="{{url('jquery-1.11.1.min.js')}}"></script>
-    <script type="text/javascript" charset="utf8" src="{{url('DataTables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{url('foundation/js/vendor/modernizr.js')}}"></script>
-    <script src="{{url('foundation/js/vendor/modernizr.js')}}"></script>
-    
-    <script type="text/javascript" class="init">
-        $(document).ready(function() {
-            $('#table_id').DataTable();
-        } );
-    </script>
+    <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
 </head>
 <body>
   
@@ -22,12 +13,20 @@
 
     @yield('content')
 
-
-    <script src="{{url('foundation/js/foundation/foundation.js')}}"></script>
-
+    <script src="{{url('jquery-1.11.1.min.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="{{url('DataTables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url('foundation/js/vendor/modernizr.js')}}"></script>
+    <script src="{{url('foundation/js/vendor/modernizr.js')}}"></script>
+    <script src="{{url('foundation/js/foundation/foundation.js')}}"></script>|
+    <script src="{{url('foundation/js/foundation/foundation.orbit.js')}}"></script>
     <script src="{{url('foundation/js/foundation/foundation.topbar.js')}}"></script>
     <script>
         $(document).foundation();
+    </script>
+    <script type="text/javascript" class="init">
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        } );
     </script>
 </body>
 </html>
